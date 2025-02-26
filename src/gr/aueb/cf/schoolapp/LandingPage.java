@@ -1,7 +1,5 @@
 package gr.aueb.cf.schoolapp;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,21 +13,22 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LandingPage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Create the frame.
-	 */
 	public LandingPage() {
+		setBackground(new Color(255, 255, 255));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(LandingPage.class.getResource("/images/eduv2.png")));
 		setTitle("Ποιότητα στην Εκπαίδευση");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 680, 451);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -37,7 +36,7 @@ public class LandingPage extends JFrame {
 		
 		JPanel header = new JPanel();
 		header.setBackground(new Color(0, 52, 117));
-		header.setBounds(0, 17, 778, 56);
+		header.setBounds(0, 17, 668, 56);
 		contentPane.add(header);
 		header.setLayout(null);
 		
@@ -57,6 +56,12 @@ public class LandingPage extends JFrame {
 		contentPane.add(lblMustConnect);
 		
 		JButton btnConnect = new JButton("Σύνδεση");
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.getLandingPage().setVisible(false);
+				Main.getLoginPage().setVisible(true);
+			}
+		});
 		btnConnect.setEnabled(false);
 		btnConnect.setForeground(new Color(255, 255, 255));
 		btnConnect.setBackground(new Color(0, 128, 0));
@@ -64,6 +69,7 @@ public class LandingPage extends JFrame {
 		contentPane.add(btnConnect);
 		
 		JCheckBox privacyCheckbox = new JCheckBox("Δηλώνω οτι αποδέχομαι τη");
+		privacyCheckbox.setBackground(new Color(255, 255, 255));
 		privacyCheckbox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -84,6 +90,7 @@ public class LandingPage extends JFrame {
 		contentPane.add(lblPrivacy);
 		
 		JPanel footer = new JPanel();
+		footer.setBackground(new Color(255, 255, 255));
 		footer.setBounds(0, 309, 668, 100);
 		contentPane.add(footer);
 		footer.setLayout(null);
